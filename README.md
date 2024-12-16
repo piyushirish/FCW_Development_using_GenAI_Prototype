@@ -29,8 +29,8 @@ The workflow includes:
 
 ## Dataset Details
 - Name: TuSimple Lane Detection Dataset
-- Description: The TuSimple dataset consists of video clips with annotated lane lines for highway driving scenarios.
-- Annotations: Lane coordinates provided for each video frame.
+- Description: The TuSimple dataset consists of images in two folders,frames and lane-masks.
+- Annotations: Lane coordinates provided for each image.
 - Usage: Primarily used for supervised learning in lane detection.
 
 You can access the TuSimple dataset from kaggle
@@ -78,10 +78,8 @@ Follow the steps below to set up the project:
 
 ## How to Use the Project
 1. image files in the `input/` directory.
-2. Run the script `main.py` to process the data.
+2. Run the script `lane_detection_model.ipynb` to process the data.
 3. The detected lane images will be saved in the `output/` folder.
-4. Modify parameters in the configuration file (`config.py`) for customization.
-
 
 ## Results and Performance
 ### Sample Results
