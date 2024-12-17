@@ -1,114 +1,3 @@
-# Lane Detection using TuSimple Dataset
-
-This project implements a **Lane Detection Model** using the **TuSimple Dataset**. The model is designed to accurately identify lane markings in driving scenarios, making it applicable to autonomous driving systems and advanced driver assistance systems (ADAS).
-
----
-
-## Table of Contents
-1. [Project Overview](#project-overview)
-2. [Dataset Details](#dataset-details)
-3. [Technologies Used](#technologies-used)
-4. [Installation Instructions](#installation-instructions)
-5. [How to Use the Project](#how-to-use-the-project)
-6. [Results and Performance](#results-and-performance)
-7. [Future Improvements](#future-improvements)
-8. [Acknowledgements](#acknowledgements)
-9. [License](#license)
-
----
-
-## Project Overview
-The project uses computer vision and deep learning techniques to detect lane lines from input images or video frames. It uses the **TuSimple dataset**, a widely used benchmark dataset for lane detection tasks.
-
-The workflow includes:
-- Preprocessing the TuSimple dataset for model training.
-- Developing a neural network-based lane detection model.
-- Evaluating the model's performance.
-
----
-
-## Dataset Details
-- Name: TuSimple Lane Detection Dataset
-- Description: The TuSimple dataset consists of images in two folders,frames and lane-masks.
-- Annotations: Lane coordinates provided for each image.
-- Usage: Primarily used for supervised learning in lane detection.
-
-You can access the TuSimple dataset from kaggle
-
----
-
-## Technologies Used
-- Python
-- OpenCV: Image processing and visualization.
-- TensorFlow/Keras: Model development and training.
-- NumPy: Data handling and numerical computation.
-- Matplotlib: Visualization of results.
-
----
-
-## Installation Instructions
-Follow the steps below to set up the project:
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/piyushirish/lane-detection-prototype.git
-   ```
-
-2. **Create a Virtual Environment**:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # For Windows: venv\Scripts\activate
-   ```
-
-3. **Install Dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Download TuSimple Dataset**:
-   - Download the dataset from kaggle.
-   - Place the dataset in the `data/` folder.
-
-5. **Run the Project**:
-   ```bash
-   run the file lane_detection_model.ipynb
-   ```
-
----
-
-## How to Use the Project
-1. image files in the `input/` directory.
-2. Run the script `lane_detection_model.ipynb` to process the data.
-3. The detected lane images will be saved in the `output/` folder.
-
-## Results and Performance
-### Sample Results
-Here are sample images showcasing lane detection:
-<img width="1440" alt="Screenshot 2024-12-14 at 11 59 18 PM" src="https://github.com/user-attachments/assets/3d048bab-5cda-43da-938f-8fb324d6ffa1" />
-<img width="1440" alt="Screenshot 2024-12-14 at 11 58 35 PM" src="https://github.com/user-attachments/assets/30ab04f7-75a6-4864-92b1-4b44e5e38402" />
-<img width="1440" alt="Screenshot 2024-12-14 at 11 58 02 PM" src="https://github.com/user-attachments/assets/0e8fecf8-7cd4-4aa9-a29f-ff88ab511bd7" />
-
-
-
-## Future Improvements
-- Implement real-time lane detection using video streams.
-- Optimize the model for faster inference.
-- Integrate advanced deep learning models like **U-Net** or **YOLO** for improved performance.
-
----
-
-## Acknowledgements
-- TuSimple for providing the dataset.
-- Open-source libraries: OpenCV, TensorFlow, and Keras.
-- Community contributors for inspiration and resources.
-
----
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-
-
 
 # Forward Collision Warning (FCW) System Code Generator
 
@@ -248,4 +137,241 @@ The generated FCW system aims to adhere to:
 
 ## License
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+
+# Forward Collision Warning (FCW) System
+
+This repository implements a **Forward Collision Warning (FCW)** system. The project includes object detection, real-time video annotation, and collision warning alerts using machine learning techniques and computer vision. It also incorporates automated testing, static analysis, and GUI-based alert notifications.
+
+---
+
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Tests](#tests)
+- [Static Analysis](#static-analysis)
+- [Notes](#notes)
+- [License](#license)
+
+---
+
+## Overview
+
+This project uses the YOLOv4 object detection model to detect objects in video frames and calculate their distances. The system issues a collision warning when an object is within a dangerous proximity threshold and displays a visual alert through a Tkinter GUI. The system also performs static code analysis and includes unit tests for functionality verification.
+
+---
+
+## Features
+
+1. **Object Detection:** Uses the YOLOv4 model to detect objects in real-time from video frames.
+2. **Collision Warning:** Alerts the user if an object is detected within a critical distance (less than 5 meters) while the vehicle is moving at a significant speed.
+3. **Real-Time Video Annotation:** Displays annotated video frames with object information, including distance and confidence score.
+4. **Graphical Warning System:** Displays a warning pop-up when a collision risk is detected.
+5. **Unit Testing:** Validates the functionality of object detection and collision warning systems.
+6. **Static Analysis:** Uses `cppcheck` for static code analysis to ensure compliance with coding standards.
+
+---
+
+## Requirements
+
+- **Python 3.8+**
+- OpenCV
+- NumPy
+- Tkinter (built into Python)
+- cppcheck (for static analysis)
+- UnitTest (built into Python)
+
+### Libraries
+Install the required dependencies using:
+```bash
+pip install opencv-python-headless numpy
+```
+
+---
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/fcw-system.git
+   cd fcw-system
+   ```
+
+2. Install the dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Download YOLOv4 model weights and configuration files from the [official YOLO website](https://pjreddie.com/darknet/yolo/):
+   - Place the `yolov4.weights` and `yolov4.cfg` files in the same directory as the script.
+
+4. Ensure the video file path in the code matches your video file's location.
+
+---
+
+## Usage
+
+1. Update the video file path in the code:
+   ```python
+   cap = cv2.VideoCapture("C://path_to_your_video_file.mp4")
+   ```
+
+2. Run the script:
+   ```bash
+   python fcw_system.py
+   ```
+
+3. Press `q` to quit the application during execution.
+
+4. Warnings will appear in both the console and a graphical window when a potential collision is detected.
+
+---
+
+## Tests
+
+Unit tests are included to validate key functionalities:
+1. **Object Detection:** Verifies that objects are detected in a test image.
+2. **Collision Warning:** Ensures that the warning system triggers appropriately based on distance and speed.
+
+To run tests:
+```bash
+python -m unittest fcw_system.py
+```
+
+---
+
+## Static Analysis
+
+This project includes static code analysis using `cppcheck` to ensure code quality and adherence to best practices.
+
+To run static analysis:
+```bash
+cppcheck --enable=all --std=c++17 fcw_generated_code.py
+```
+
+---
+
+## Notes
+
+- Ensure you have the YOLOv4 weights and configuration files in the correct location.
+- The system is designed for educational purposes and may require further tuning for production use.
+- Video processing requires a capable system for real-time execution.
+
+---
+
+## License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+# Lane Detection using TuSimple Dataset
+
+This project implements a **Lane Detection Model** using the **TuSimple Dataset**. The model is designed to accurately identify lane markings in driving scenarios, making it applicable to autonomous driving systems and advanced driver assistance systems (ADAS).
+
+---
+
+## Table of Contents
+1. [Project Overview](#project-overview)
+2. [Dataset Details](#dataset-details)
+3. [Technologies Used](#technologies-used)
+4. [Installation Instructions](#installation-instructions)
+5. [How to Use the Project](#how-to-use-the-project)
+6. [Results and Performance](#results-and-performance)
+7. [Future Improvements](#future-improvements)
+8. [Acknowledgements](#acknowledgements)
+9. [License](#license)
+
+---
+
+## Project Overview
+The project uses computer vision and deep learning techniques to detect lane lines from input images or video frames. It uses the **TuSimple dataset**, a widely used benchmark dataset for lane detection tasks.
+
+The workflow includes:
+- Preprocessing the TuSimple dataset for model training.
+- Developing a neural network-based lane detection model.
+- Evaluating the model's performance.
+
+---
+
+## Dataset Details
+- Name: TuSimple Lane Detection Dataset
+- Description: The TuSimple dataset consists of images in two folders,frames and lane-masks.
+- Annotations: Lane coordinates provided for each image.
+- Usage: Primarily used for supervised learning in lane detection.
+
+You can access the TuSimple dataset from kaggle
+
+---
+
+## Technologies Used
+- Python
+- OpenCV: Image processing and visualization.
+- TensorFlow/Keras: Model development and training.
+- NumPy: Data handling and numerical computation.
+- Matplotlib: Visualization of results.
+
+---
+
+## Installation Instructions
+Follow the steps below to set up the project:
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/piyushirish/lane-detection-prototype.git
+   ```
+
+2. **Create a Virtual Environment**:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # For Windows: venv\Scripts\activate
+   ```
+
+3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Download TuSimple Dataset**:
+   - Download the dataset from kaggle.
+   - Place the dataset in the `data/` folder.
+
+5. **Run the Project**:
+   ```bash
+   run the file lane_detection_model.ipynb
+   ```
+
+---
+
+## How to Use the Project
+1. image files in the `input/` directory.
+2. Run the script `lane_detection_model.ipynb` to process the data.
+3. The detected lane images will be saved in the `output/` folder.
+
+## Results and Performance
+### Sample Results
+Here are sample images showcasing lane detection:
+<img width="1440" alt="Screenshot 2024-12-14 at 11 59 18 PM" src="https://github.com/user-attachments/assets/3d048bab-5cda-43da-938f-8fb324d6ffa1" />
+<img width="1440" alt="Screenshot 2024-12-14 at 11 58 35 PM" src="https://github.com/user-attachments/assets/30ab04f7-75a6-4864-92b1-4b44e5e38402" />
+<img width="1440" alt="Screenshot 2024-12-14 at 11 58 02 PM" src="https://github.com/user-attachments/assets/0e8fecf8-7cd4-4aa9-a29f-ff88ab511bd7" />
+
+
+
+## Future Improvements
+- Implement real-time lane detection using video streams.
+- Optimize the model for faster inference.
+- Integrate advanced deep learning models like **U-Net** or **YOLO** for improved performance.
+
+---
+
+## Acknowledgements
+- TuSimple for providing the dataset.
+- Open-source libraries: OpenCV, TensorFlow, and Keras.
+- Community contributors for inspiration and resources.
+
+---
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
