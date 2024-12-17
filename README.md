@@ -141,115 +141,36 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 # Forward Collision Warning (FCW) System
 
-This repository implements a **Forward Collision Warning (FCW)** system. The project includes object detection, real-time video annotation, and collision warning alerts using machine learning techniques and computer vision. It also incorporates automated testing, static analysis, and GUI-based alert notifications.
-
----
-
-## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Tests](#tests)
-- [Static Analysis](#static-analysis)
-- [Notes](#notes)
-- [License](#license)
-
----
-
-## Overview
-
-This project uses the YOLOv4 object detection model to detect objects in video frames and calculate their distances. The system issues a collision warning when an object is within a dangerous proximity threshold and displays a visual alert through a Tkinter GUI. The system also performs static code analysis and includes unit tests for functionality verification.
-
----
+This repository implements a **Forward Collision Warning (FCW)** system using **YOLOv8** for vehicle detection, lane detection for lane tracking, and a distance estimation algorithm to trigger collision warnings when another vehicle is detected within a defined distance in the same lane.
 
 ## Features
 
-1. **Object Detection:** Uses the YOLOv4 model to detect objects in real-time from video frames.
-2. **Collision Warning:** Alerts the user if an object is detected within a critical distance (less than 5 meters) while the vehicle is moving at a significant speed.
-3. **Real-Time Video Annotation:** Displays annotated video frames with object information, including distance and confidence score.
-4. **Graphical Warning System:** Displays a warning pop-up when a collision risk is detected.
-5. **Unit Testing:** Validates the functionality of object detection and collision warning systems.
-6. **Static Analysis:** Uses `cppcheck` for static code analysis to ensure compliance with coding standards.
-
----
+- **Vehicle Detection** using YOLOv8: Detects vehicles (cars, trucks, etc.) in the video stream.
+- **Lane Detection** using edge detection and the Hough Transform to detect lane boundaries.
+- **Collision Warning**: Triggered when another vehicle is detected within a specified distance (default: 30 meters).
+- **Real-time Video Processing**: Processes video files and displays results with bounding boxes and collision warnings.
+- **Efficient Multi-threading**: Optimized lane detection with multi-threading for faster performance.
 
 ## Requirements
 
-- **Python 3.8+**
-- OpenCV
-- NumPy
-- Tkinter (built into Python)
-- cppcheck (for static analysis)
-- UnitTest (built into Python)
+### 1. Install Python (3.7+)
 
-### Libraries
-Install the required dependencies using:
+Ensure you have **Python 3.7** or higher. You can download it from [here](https://www.python.org/downloads/).
+
+### 2. Install Dependencies
+
+Create a Python virtual environment (optional but recommended), and then install the necessary libraries:
+
 ```bash
-pip install opencv-python-headless numpy
-```
+# Create and activate a virtual environment (optional)
+python -m venv fcw_env
+# On Windows
+fcw_env\Scripts\activate
+# On macOS/Linux
+source fcw_env/bin/activate
 
----
-
-## Installation
-
-1. Clone the repository:
-   ```bash
-    https://github.com/piyushirish/FCW_Development_using_GenAI_Prototype.git
-   ```
-
-2. Install the dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Download YOLOv4 model weights and configuration files from the [official YOLO website](https://pjreddie.com/darknet/yolo/):
-   - Place the `yolov4.weights` and `yolov4.cfg` files in the same directory as the script.
-
-4. Ensure the video file path in the code matches your video file's location.
-
----
-
-## Usage
-
-1. Update the video file path in the code:
-   ```python
-   cap = cv2.VideoCapture("C://path_to_your_video_file.mp4")
-   ```
-
-2. Run the script:
-   ```bash
-   python fcw_system.py
-   ```
-
-3. Press `q` to quit the application during execution.
-
-4. Warnings will appear in both the console and a graphical window when a potential collision is detected.
-
----
-
-## Tests
-
-Unit tests are included to validate key functionalities:
-1. **Object Detection:** Verifies that objects are detected in a test image.
-2. **Collision Warning:** Ensures that the warning system triggers appropriately based on distance and speed.
-
-To run tests:
-```bash
-python -m unittest fcw_system.py
-```
-
----
-
-## Static Analysis
-
-This project includes static code analysis using `cppcheck` to ensure code quality and adherence to best practices.
-
-To run static analysis:
-```bash
-cppcheck --enable=all --std=c++17 fcw_generated_code.py
-```
+# Install required libraries
+pip install opencv-python torch ultralytics numpy
 
 ---
 
