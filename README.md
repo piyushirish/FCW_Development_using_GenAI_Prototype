@@ -253,6 +253,11 @@ cppcheck --enable=all --std=c++17 fcw_generated_code.py
 
 ---
 
+## Sample Outputs
+![1000285048](https://github.com/user-attachments/assets/e842cb3a-e7d6-4c6c-8e2c-75dc63081f4b)
+![1000285047](https://github.com/user-attachments/assets/5b92b67f-28df-4fd2-bb5d-6f69b5e1d0fe)
+
+
 ## Notes
 
 - Ensure you have the YOLOv4 weights and configuration files in the correct location.
