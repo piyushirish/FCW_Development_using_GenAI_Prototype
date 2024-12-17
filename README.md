@@ -53,7 +53,7 @@ pip install openai
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/piyushirish/lane-detection-prototype.git
+   https://github.com/piyushirish/FCW_Development_using_GenAI_Prototype.git
    ```
 2. Ensure you have the **OpenAI API key**.
 3. Install the dependencies:
@@ -196,8 +196,7 @@ pip install opencv-python-headless numpy
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/fcw-system.git
-   cd fcw-system
+    https://github.com/piyushirish/FCW_Development_using_GenAI_Prototype.git
    ```
 
 2. Install the dependencies:
@@ -319,7 +318,7 @@ Follow the steps below to set up the project:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/piyushirish/lane-detection-prototype.git
+   https://github.com/piyushirish/FCW_Development_using_GenAI_Prototype.git
    ```
 
 2. **Create a Virtual Environment**:
