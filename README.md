@@ -141,55 +141,122 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 # Forward Collision Warning (FCW) System
 
-This repository implements a **Forward Collision Warning (FCW)** system using **YOLOv8** for vehicle detection, lane detection for lane tracking, and a distance estimation algorithm to trigger collision warnings when another vehicle is detected within a defined distance in the same lane.
+This project implements a **Forward Collision Warning System** using the **YOLOv8** object detection model and OpenCV. The system detects vehicles in a video feed, estimates their distance based on bounding box size, and triggers a collision warning if a detected vehicle is within a specified distance threshold.
+
+---
+
+## Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [Features](#features)
+3. [Dependencies](#dependencies)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [How It Works](#how-it-works)
+7. [Directory Structure](#directory-structure)
+8. [Contributing](#contributing)
+9. [License](#license)
+
+---
+
+## Project Overview
+
+The Forward Collision Warning System processes video footage from a front-facing camera to detect vehicles in the same lane. It estimates the distance to each detected vehicle and provides a visual collision warning if any vehicle is dangerously close. The system leverages the **Ultralytics YOLOv8** model for real-time vehicle detection and OpenCV for video processing and lane detection.
+
+---
 
 ## Features
 
-- **Vehicle Detection** using YOLOv8: Detects vehicles (cars, trucks, etc.) in the video stream.
-- **Lane Detection** using edge detection and the Hough Transform to detect lane boundaries.
-- **Collision Warning**: Triggered when another vehicle is detected within a specified distance (default: 30 meters).
-- **Real-time Video Processing**: Processes video files and displays results with bounding boxes and collision warnings.
-- **Efficient Multi-threading**: Optimized lane detection with multi-threading for faster performance.
+- **Vehicle Detection**: Detects cars using the YOLOv8 model.
+- **Distance Estimation**: Approximates distance based on bounding box size.
+- **Lane Detection**: Ensures vehicles are detected in the same lane.
+- **Collision Warning**: Displays a warning when a vehicle is too close.
+- **Multi-threading**: Uses threading for optimized lane detection and video processing.
 
-## Requirements
+---
 
-### 1. Install Python (3.7+)
+## Dependencies
 
-Ensure you have **Python 3.7** or higher. You can download it from [here](https://www.python.org/downloads/).
+Ensure the following libraries and tools are installed:
 
-### 2. Install Dependencies
+- **Python 3.8+**
+- **OpenCV**
+- **NumPy**
+- **Ultralytics** (for YOLOv8)
 
-Create a Python virtual environment (optional but recommended), and then install the necessary libraries:
+Install dependencies using the following command:
 
 ```bash
-# Create and activate a virtual environment (optional)
-python -m venv fcw_env
-# On Windows
-fcw_env\Scripts\activate
-# On macOS/Linux
-source fcw_env/bin/activate
-
-# Install required libraries
-pip install opencv-python torch ultralytics numpy
+pip install opencv-python-headless numpy ultralytics
+```
 
 ---
 
-## Sample Outputs
-![1000285048](https://github.com/user-attachments/assets/e842cb3a-e7d6-4c6c-8e2c-75dc63081f4b)
-![1000285047](https://github.com/user-attachments/assets/5b92b67f-28df-4fd2-bb5d-6f69b5e1d0fe)
+## Installation
 
-
-## Notes
-
-- Ensure you have the YOLOv4 weights and configuration files in the correct location.
-- The system is designed for educational purposes and may require further tuning for production use.
-- Video processing requires a capable system for real-time execution.
+1. Clone the repository:
+   ```bash
+   https://github.com/piyushirish/FCW_Development_using_GenAI_Prototype.git
+   ```
+2. Download the YOLOv8 model weights (**yolov8n.pt**):
+   - Visit the Ultralytics YOLOv8 page to obtain the weights.
+   - Place the weights file (`yolov8n.pt`) in the project directory.
+3. Verify your Python environment and install required dependencies.
 
 ---
+
+## Usage
+
+1. Place your input video in the project directory.
+2. Update the `video_path` variable in the script with your video file path.
+   ```python
+   video_path = "/path/to/your/video.mp4"
+   ```
+3. Run the script:
+   ```bash
+   python forward_collision_warning.py
+   ```
+4. Press `` during execution to exit the program.
+
+---
+
+## How It Works
+
+The project workflow consists of the following steps:
+
+1. **Lane Detection**: Using edge detection and Hough Line Transform, the system identifies lane boundaries.
+2. **Vehicle Detection**: The YOLOv8 model detects vehicles in each video frame.
+3. **Distance Estimation**: The system calculates distance based on bounding box size and detection confidence:
+   - Larger bounding box → Closer distance.
+   - Smaller bounding box → Farther distance.
+4. **Collision Detection**: The system checks if:
+   - The vehicle is in the same lane.
+   - The estimated distance is below the warning threshold.
+5. **Warning Display**: If a collision is predicted, a **red collision warning** appears on the video feed.
+
+---
+
+## Directory Structure
+
+```
+forward-collision-warning/
+|-- forward_collision_warning.py  # Main script
+|-- yolov8n.pt                    # YOLOv8 model weights
+|-- test_video.mp4                # Input video (replace with your own)
+|-- README.md                     # Project documentation
+```
+
+---
+## Sample results
+![WhatsApp Image 2024-12-17 at 20 24 17](https://github.com/user-attachments/assets/4d1778e1-d526-40af-8d1a-6e75aa477819)
+![WhatsApp Image 2024-12-17 at 20 24 16](https://github.com/user-attachments/assets/ae9bb004-be95-47d3-936f-9fca78e3db26)
+
 
 ## License
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License**. You are free to use, modify, and distribute this project with attribution.
+
+---
 
 # Lane Detection using TuSimple Dataset
 
