@@ -106,3 +106,146 @@ Here are sample images showcasing lane detection:
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+
+
+
+# Forward Collision Warning (FCW) System Code Generator
+
+This repository automates the generation of Python code for a **Forward Collision Warning (FCW)** system using OpenAI's GPT API. The system is designed based on predefined requirements such as object detection, collision warning, compliance standards, and more.
+
+---
+
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Generated Output](#generated-output)
+- [Compliance](#compliance)
+- [Notes](#notes)
+- [License](#license)
+
+---
+
+## Overview
+
+The program reads functional requirements for an FCW system from a JSON file and uses the OpenAI GPT model (gpt-3.5-turbo) to generate Python code. The generated code is stored in a separate Python file for further use.
+
+---
+
+## Features
+
+1. **Automated Code Generation:** Leverages OpenAI GPT-3.5-turbo to generate Python code based on provided FCW requirements.
+2. **Object Detection:** Implements object detection functionality with specified accuracy and detection range.
+3. **Collision Warning:** Triggers collision alerts based on a configurable distance and response time.
+4. **Annotated Video Frames:** The system provides visual feedback with annotations to highlight detected objects and potential collisions.
+5. **Easy Compliance Configuration:** Ensures the generated system aligns with industry standards such as MISRA, ASPICE, and ISO 26262.
+
+---
+
+## Requirements
+
+- **Python 3.8+**
+- **OpenAI Python Library**
+- **JSON File Handling**
+- **OpenAI API Key**
+
+### Libraries
+Install the required dependencies:
+```bash
+pip install openai
+```
+
+---
+
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/piyushirish/lane-detection-prototype.git
+   ```
+2. Ensure you have the **OpenAI API key**.
+3. Install the dependencies:
+   ```bash
+   pip install openai
+   ```
+---
+
+## Usage
+
+1. Update the **requirements** in `fcw_requirements.json`:
+   ```json
+   {
+       "object_detection": {
+           "method": "AI/ML",
+           "accuracy": "95%",
+           "detection_range": "50 meters"
+       },
+       "collision_warning": {
+           "trigger_distance": "5 meters",
+           "response_time": "100 ms"
+       },
+       "compliance": {
+           "standards": ["MISRA", "ASPICE", "ISO 26262"]
+       },
+       "test_coverage": "100%"
+   }
+   ```
+2. Run the code to generate Python code based on the requirements:
+   ```bash
+   python generate_fcw_code.py
+   ```
+3. The generated Python code will be saved to `generated_code_FCW.py`.
+
+4. Review or execute the generated file:
+   ```bash
+   python generated_code_FCW.py
+   ```
+
+---
+
+## Configuration
+
+### OpenAI API Key
+Ensure you have a valid OpenAI API key. Replace the placeholder in the script with your key:
+```python
+openai.api_key = "your-openai-api-key"
+```
+
+### JSON File for Requirements
+Modify the `fcw_requirements.json` file to customize the input requirements.
+
+---
+
+## Generated Output
+The generated file, `generated_code_FCW.py`, includes:
+- Object Detection methods
+- Collision Warning logic with trigger thresholds
+- Video frame annotation
+
+You can integrate or customize this output further based on your project requirements.
+
+---
+
+## Compliance
+The generated FCW system aims to adhere to:
+- **MISRA**
+- **ASPICE**
+- **ISO 26262**
+
+> Note: Compliance validation is beyond the scope of automated code generation. Manual verification is recommended.
+
+---
+
+## Notes
+1. Ensure a stable internet connection for API calls.
+2. The code generation accuracy depends on the clarity and completeness of the input requirements.
+3. This repository is for educational and prototyping purposes.
+
+---
+
+## License
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
